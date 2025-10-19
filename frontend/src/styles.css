@@ -1,0 +1,65 @@
+
+/* ==== โครงหน้าแบบเต็มจอและรองรับมือถือ ==== */
+html, body, #root { height: 100%; }
+body { margin: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+.app {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+@supports not (min-height: 100svh) {
+  .app { min-height: 100vh; }
+}
+
+.container { width: min(960px, 100%); margin: 0 auto; padding: 16px; }
+.header {
+  position: sticky; top: 0; z-index: 10;
+  backdrop-filter: blur(8px);
+  padding: 12px 0;
+}
+
+/* ==== กระดาน XO แบบตอบสนองต่อหน้าจอ ==== */
+.board-wrap {
+  width: min(92vmin, 520px);
+  aspect-ratio: 1 / 1;
+  margin: 12px auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 3px solid #ffffff;
+  background: rgba(255,255,255,.12);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%; height: 100%;
+}
+
+.cell {
+  display: grid; place-items: center;
+  background: #0d1319;
+  border-right: 1px solid #273141;
+  border-bottom: 1px solid #273141;
+}
+.cell:nth-child(3n) { border-right: none; }
+.cell:nth-last-child(-n+3) { border-bottom: none; }
+
+.cell:disabled { cursor: default; opacity: .98; }
+.cell:not(:disabled):hover { filter: brightness(1.06); }
+
+.mark {
+  font-weight: 900; font-size: clamp(28px, 8vmin, 48px); letter-spacing: 2px;
+  text-shadow: 0 6px 18px rgba(0,0,0,.35);
+}
+.mark--win { text-shadow: 0 0 18px rgba(110,231,255,.65); }
+.mark--x { color: #2b9348; }
+.mark--o { color: #ff4db8; }
+
+.table-wrap { overflow: auto; border-radius: 12px; }
+.table { width: 100%; border-collapse: collapse; min-width: 480px; }
+.table th, .table td { padding: 12px; border-bottom: 1px solid #273141; }
+.table th { text-align: left; }
+
+button { touch-action: manipulation; }
