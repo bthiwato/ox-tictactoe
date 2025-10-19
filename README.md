@@ -1,7 +1,7 @@
 # 🎮 OX (Tic‑Tac‑Toe) — React + Node.js + OAuth 2.0 + Prisma
 
 ## 👩‍💻 ผู้จัดทำ
-- ผู้พัฒนา: Banphot Thiwato (BThiwato Farm)
+- ผู้พัฒนา: Banphot Thiwato
 - การทดสอบเขียนเกม XO
 
 ## 🚀 วิธีใช้งานย่อ
